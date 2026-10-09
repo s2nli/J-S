@@ -1,0 +1,7 @@
+{
+  "name": "codex-studys-vb",
+  "private": true,
+  "version": "1.0.0",
+  "description": "CODEX STUDYS (Vibrant batches) - static site + /api/vb serverless proxy",
+  "engines": { "node": ">=18" }
+}

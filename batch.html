@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Opening batch… — CODEX STUDYS</title>
+<meta name="robots" content="noindex">
+<style>body{margin:0;min-height:100vh;display:grid;place-items:center;background:#080a0f;color:#f4f6fb;font-family:system-ui,sans-serif;text-align:center}a{color:#a69cff}</style>
+</head>
+<body>
+<!--
+  batch.html used to be a second, separate course viewer that called a different API with different batch ids.
+  There is now ONE viewer (vibrant.js inside index.html). This page only keeps old links working:
+    batch.html?id=35   (or ?course_id=35)   ->   index.html?batch=35
+-->
+<p id="msg">Opening batch… <noscript><br><a href="index.html">Go to all batches</a></noscript></p>
+<script>
+(function () {
+  var p = new URLSearchParams(location.search);
+  var id = p.get("id") || p.get("course_id") || p.get("batch");
+  var target = "index.html" + (id && /^[A-Za-z0-9_-]{1,64}$/.test(id) ? "?batch=" + encodeURIComponent(id) : "");
+  location.replace(target);
+  setTimeout(function () { document.getElementById("msg").innerHTML = 'Still here? <a href="' + target + '">Continue</a>'; }, 3000);
+})();
+</script>
+</body>
+</html>
